@@ -1,0 +1,8 @@
+#root {
+  max-width: 1280px;
+  min-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+}

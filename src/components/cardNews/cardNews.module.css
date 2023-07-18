@@ -1,0 +1,48 @@
+.cardContainer {
+  display: flex;
+  position: relative;
+  border-radius: 20px;
+  width: 90%;
+  background-color: white;
+  margin: 20px;
+}
+
+.cardImage {
+  object-fit: cover;
+}
+
+.containerText {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 10px;
+}
+.contentText hr {
+  width: 100%;
+  border-color: #f42e08;
+}
+.headerCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.actionsCard {
+  display: flex;
+  font-size: 25px;
+  margin: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #f42e08;
+}
+@media (max-width: 40em) {
+  .cardContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cardImage {
+    width: 70%;
+    height: auto;
+    margin: 15px;
+  }
+}

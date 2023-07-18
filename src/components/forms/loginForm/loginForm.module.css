@@ -1,0 +1,45 @@
+.errorText {
+  color: red;
+}
+
+.formContainer {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-width: 420px;
+  min-width: 320px;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.formContainer label {
+  font-size: 18;
+  font-weight: bold;
+  align-self: stretch;
+  text-align: left;
+}
+
+.sendButton {
+  background-color: #f4533b;
+  color: white;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 15px 30px;
+  border-width: 0;
+}
+
+.sendButton:hover {
+  background-color: #f42e08;
+  transition: background-color 0.5s;
+}
+
+.actionsContainer {
+  align-self: flex-end;
+  display: flex;
+}
+.logoEquipzilla {
+  width: 75%;
+  height: auto;
+}

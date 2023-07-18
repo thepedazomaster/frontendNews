@@ -1,0 +1,23 @@
+.searchContainer {
+  display: flex;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+.searchContainer .textInput {
+  width: 300px;
+}
+.newsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.buttonSearch {
+  border-radius: 15px;
+  border-width: 0;
+  padding: 10px;
+  background-color: cornflowerblue;
+  color: white;
+}
+.buttonSearch:hover {
+  background-color: blue;
+}
