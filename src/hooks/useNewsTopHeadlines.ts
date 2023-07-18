@@ -1,4 +1,4 @@
-import { useCallback, useState, useContext } from "react";
+import { useCallback, useState, useContext, useEffect } from "react";
 import { myAPI } from "../lib/axios.config";
 import { Article, NewsResponse } from "../interfaces/newsResponse.interface";
 import { useCookies } from "react-cookie";
@@ -11,6 +11,22 @@ function useNewsTopHeadlines() {
   const [cookies, _setCookies, removeCookies] = useCookies(["x-access-token"]);
   const navigate = useNavigate();
   const { logOut } = useContext(AuthContext);
+
+  useEffect(() => {
+    myAPI
+      .get<NewsResponse>("news/everything", {
+        headers: { "x-access-token": cookies["x-access-token"] as string },
+      })
+      .catch((error) => {
+        if (request.isAxiosError(error)) {
+          if (error.status === 401 || error.status === 403) {
+            logOut();
+            removeCookies("x-access-token");
+            navigate("/login");
+          }
+        }
+      });
+  }, []);
 
   const getNews = useCallback(
     async ({

@@ -20,7 +20,7 @@ function useNewsEverything() {
       })
       .catch((error) => {
         if (request.isAxiosError(error)) {
-          if (error.status === 401) {
+          if (error.status === 401 || error.status === 403) {
             logOut();
             removeCookies("x-access-token");
             navigate("/login");
@@ -55,7 +55,7 @@ function useNewsEverything() {
         console.log(error);
         setLoading(false);
         if (request.isAxiosError(error)) {
-          if (error.status === 401) {
+          if (error.status === 401 || error.status === 403) {
             logOut();
             removeCookies("x-access-token");
             navigate("/login");
