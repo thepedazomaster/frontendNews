@@ -13,8 +13,8 @@ import EverythingNewsScreen from "./screens/everithingNews/EverythingNewsScreen"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
-      <Route path="/" element={<RootLayout />}>
+    <Route path="/">
+      <Route path="/news" element={<RootLayout />}>
         <Route path="/topNews" element={<TopNewsScreen />} />
         <Route path="/generalNews" element={<EverythingNewsScreen />} />
         <Route path="/newsUser" element={<div>USER NEWS</div>} />
