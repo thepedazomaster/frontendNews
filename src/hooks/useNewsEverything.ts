@@ -14,18 +14,19 @@ function useNewsEverything() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const resp = myAPI.get<NewsResponse>("news/everything", {
-      headers: { "x-access-token": cookies["x-access-token"] as string },
-    });
-    resp.catch((error) => {
-      if (request.isAxiosError(error)) {
-        if (error.status === 401) {
-          logOut();
-          removeCookies("x-access-token");
-          navigate("/login");
+    myAPI
+      .get<NewsResponse>("news/everything", {
+        headers: { "x-access-token": cookies["x-access-token"] as string },
+      })
+      .catch((error) => {
+        if (request.isAxiosError(error)) {
+          if (error.status === 401) {
+            logOut();
+            removeCookies("x-access-token");
+            navigate("/login");
+          }
         }
-      }
-    });
+      });
   }, [cookies, logOut, navigate, removeCookies]);
 
   const getNewsEverything = useCallback(
