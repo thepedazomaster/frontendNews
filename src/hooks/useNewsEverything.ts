@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Article, NewsResponse } from "../interfaces/newsResponse.interface";
 import { myAPI } from "../lib/axios.config";

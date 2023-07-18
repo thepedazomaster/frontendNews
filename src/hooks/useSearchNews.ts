@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useCallback, useState } from "react";
@@ -23,7 +24,9 @@ function useSearchNews() {
     try {
       setLoading(true);
       const resp = await myAPI.post("search");
+
       setLoading(false);
+      return resp.data;
     } catch (error) {
       console.log(error);
       setLoading(false);
