@@ -33,7 +33,7 @@ function useSearchNews() {
     }
   }, []);
 
-  return [searches, loading, createSearch];
+  return [searches, loading, createSearch, getSearches];
 }
 
 export default useSearchNews;

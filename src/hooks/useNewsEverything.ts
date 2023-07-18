@@ -14,20 +14,17 @@ function useNewsEverything() {
   const [loading, setLoading] = useState(false);
 
   const getNewsEverything = useCallback(
-    async (
-      {
-        q,
-        lenguage,
-        from,
-        to,
-      }: {
-        q: string | null;
-        lenguage: string | null;
-        from: string | null;
-        to: string | null;
-      },
-      source = null
-    ) => {
+    async ({
+      q,
+      lenguage,
+      from,
+      to,
+    }: {
+      q: string | null;
+      lenguage: string | null;
+      from: string | null;
+      to: string | null;
+    }) => {
       try {
         setLoading(true);
         const resp = await myAPI.get<NewsResponse>("news/everything", {
