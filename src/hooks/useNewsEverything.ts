@@ -2,8 +2,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Article, NewsResponse } from "../interfaces/newsResponse.interface";
-import { myAPI } from "../lib/axios.config";
-import request from "axios";
+import { myAPI, validateUser } from "../lib/axios.config";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth/authProvider";
 
@@ -15,28 +14,15 @@ function useNewsEverything() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    myAPI
-      .get<NewsResponse>("news/everything", {
-        headers: { "x-access-token": cookies["x-access-token"] as string },
-      })
-      .catch((error: any) => {
-        if (error.response.status) {
-          logOut();
-          removeCookies("x-access-token");
-          navigate("/login");
-        }
-
-        if (request.isAxiosError(error)) {
-          console.log("entre a error");
-
-          if (error.status === 401 || error.status === 403) {
-            logOut();
-            removeCookies("x-access-token");
-            navigate("/login");
-          }
-        }
-      });
-  }, []);
+    validateUser(() => {
+      logOut();
+      removeCookies("x-access-token");
+      navigate("/login");
+    });
+    void myAPI.get<NewsResponse>("news/everything", {
+      headers: { "x-access-token": cookies["x-access-token"] as string },
+    });
+  }, [cookies, logOut, navigate, removeCookies]);
 
   const getNewsEverything = useCallback(
     async ({
@@ -62,17 +48,9 @@ function useNewsEverything() {
         setLoading(false);
       } catch (error) {
         console.log(error);
-        setLoading(false);
-        if (request.isAxiosError(error)) {
-          if (error.status === 401 || error.status === 403) {
-            logOut();
-            removeCookies("x-access-token");
-            navigate("/login");
-          }
-        }
       }
     },
-    [cookies, logOut, navigate, removeCookies]
+    [cookies]
   );
 
   /*  useEffect(() => {

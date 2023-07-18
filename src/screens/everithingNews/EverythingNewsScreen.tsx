@@ -92,8 +92,11 @@ function EverythingNewsScreen() {
             key={key}
             title={article.title}
             description={article.description}
-            imagePath={article.urlToImage}
-            urlNews={article.url}
+            urlToImage={article.urlToImage}
+            url={article.url}
+            author={article.author}
+            publishedAt={article.publishedAt}
+            content={article.content}
           />
         ))}
       </section>

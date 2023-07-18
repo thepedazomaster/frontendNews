@@ -35,6 +35,9 @@
   top: 0;
   color: #f42e08;
 }
+.tags {
+  display: flex;
+}
 @media (max-width: 40em) {
   .cardContainer {
     flex-direction: column;

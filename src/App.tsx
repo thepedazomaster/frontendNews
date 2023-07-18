@@ -10,6 +10,7 @@ import RootLayout from "./layouts/RootLayout";
 import LoginScreen from "./screens/login/LoginScreen";
 import TopNewsScreen from "./screens/topNews/TopNewsScreen";
 import EverythingNewsScreen from "./screens/everithingNews/EverythingNewsScreen";
+import MyNewsScreen from "./screens/mynews/MyNewsScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +18,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<RootLayout />}>
         <Route path="/topNews" element={<TopNewsScreen />} />
         <Route path="/generalNews" element={<EverythingNewsScreen />} />
-        <Route path="/newsUser" element={<div>USER NEWS</div>} />
+        <Route path="/newsUser" element={<MyNewsScreen />} />
       </Route>
       <Route index path="/login" element={<LoginScreen />} />
     </Route>
