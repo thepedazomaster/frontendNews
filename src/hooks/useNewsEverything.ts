@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Article, NewsResponse } from "../interfaces/newsResponse.interface";
@@ -18,8 +19,12 @@ function useNewsEverything() {
       .get<NewsResponse>("news/everything", {
         headers: { "x-access-token": cookies["x-access-token"] as string },
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((error: any) => {
+        if (error.response.status) {
+          logOut();
+          removeCookies("x-access-token");
+          navigate("/login");
+        }
 
         if (request.isAxiosError(error)) {
           console.log("entre a error");

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { useCallback, useState, useContext, useEffect } from "react";
 import { myAPI } from "../lib/axios.config";
 import { Article, NewsResponse } from "../interfaces/newsResponse.interface";
@@ -18,6 +19,11 @@ function useNewsTopHeadlines() {
         headers: { "x-access-token": cookies["x-access-token"] as string },
       })
       .catch((error) => {
+        if (error.response.status) {
+          logOut();
+          removeCookies("x-access-token");
+          navigate("/login");
+        }
         if (request.isAxiosError(error)) {
           if (error.status === 401 || error.status === 403) {
             logOut();
