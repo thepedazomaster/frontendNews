@@ -19,6 +19,8 @@ function useNewsEverything() {
         headers: { "x-access-token": cookies["x-access-token"] as string },
       })
       .catch((error) => {
+        console.log(error);
+
         if (request.isAxiosError(error)) {
           if (error.status === 401 || error.status === 403) {
             logOut();
