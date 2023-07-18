@@ -22,6 +22,8 @@ function useNewsEverything() {
         console.log(error);
 
         if (request.isAxiosError(error)) {
+          console.log("entre a error");
+
           if (error.status === 401 || error.status === 403) {
             logOut();
             removeCookies("x-access-token");
