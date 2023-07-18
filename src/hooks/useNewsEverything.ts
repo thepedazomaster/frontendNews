@@ -27,7 +27,7 @@ function useNewsEverything() {
           }
         }
       });
-  }, [cookies, logOut, navigate, removeCookies]);
+  }, []);
 
   const getNewsEverything = useCallback(
     async ({
